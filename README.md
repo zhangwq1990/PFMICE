@@ -10,8 +10,19 @@ This is a 3D test case of the code PFMICE
 
 ### Dependencies
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+* PFMICE is written with Fortran. Before you try to install PFMICE on your local computer or
+workstation, Fortran compiler (GCC or Intel Fortran) and MPI libraries (e.g., openmpi or Intel
+MPI) must be installed. OpenMPI is freely available online:
+https://www.open-mpi.org/software/ompi/v4.1/.
+and it can be installed in the following steps:
+shell$ gunzip -c openmpi-4.1.1.tar.gz | tar xf -
+shell$ cd openmpi-4.1.1
+shell$ ./configure --prefix=/usr/local
+<...lots of output...>
+shell$ make all install
+Intel oneAPI Toolkits can be found in:
+https://software.intel.com/content/www/us/en/develop/tools/oneapi/all-toolkits.html#
+gs.cpa4px.
 
 ### Installing
 
