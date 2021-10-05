@@ -1,7 +1,7 @@
-# Project Title
+# PFMICE
 
 PFMICE
-![alt text](https://github.com/zhangwq1990/PFMICE/logo.png?raw=true)
+![alt text](https://github.com/zhangwq1990/PFMICE/blob/11c0ed452340c213a93eb67bba940eaed6a01564/logo.png)
 ## Description
 
 This is a 3D test case of the code PFMICE
