@@ -40,30 +40,61 @@ https://software.intel.com/content/www/us/en/develop/tools/oneapi/all-toolkits.h
 
 ### Installing
 
-* How/where to download your program
+* A Makefile can be found in the folder. If your current compiling environment is GCC+OpenMPI,
+in the Makefile, you should use:
+
+```
+FC = mpif90
+```
+```
+FFLAGS := -O3 -ffixed-line-length-none -mcmodel=large -fdefault-real-8 -cpp -Wall -fcheck=all
+```
+For Intel compiler+Intel MPI, the setup in the Makefile will be:
+```
+FC = mpiifort
+```
+```
+FFLAGS := -r8 -fpconstant -O3 -132 -cpp
+```
+To compile the code, you need to compile the libraries at first with:
+```
+make libraries
+```
+and then compile the source code with:
+```
+make
+```
+you can remove the executables with:
+```
+make clean
+```
+
+
+
 * Any modifications needed to be made to files/folders
 
 ### Executing program
 
-* How to run the program
-* Step-by-step bullets
+* To run the code:
 ```
-code blocks for commands
+mpirun -np N PFMICE
 ```
+where N is the number of CPU cores.
 
 ## Help
 
 Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+You can drop an e-mail to zhangwq1990@yahoo.com
 
 ## Authors
 
 Contributors names and contact info
 
-ex. Dominique Pizzie  
-ex. [@DomPizzie](https://twitter.com/dompizzie)
+Developer: Wenqiang Zhang
+
+Email: zhangwq1990@yahoo.com
+
+Co-Developer: Armin Shahmardi, Ziyang Huang, Xuerui Mao
 
 ## Version History
 
@@ -75,13 +106,5 @@ ex. [@DomPizzie](https://twitter.com/dompizzie)
 
 ## License
 
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+This project is licensed under the GUN general Licenses - see the LICENSE.md file for details
 
-## Acknowledgments
-
-Inspiration, code snippets, etc.
-* [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
