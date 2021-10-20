@@ -111,8 +111,8 @@ This project is licensed under the GUN general Licenses - see the LICENSE.md fil
 
 ## References
 <a id="1">[1]</a>
-A fully Eulerian hybrid immersed boundary-phase field model for contact line dynamics on complex geometries,
 Shahmardi, Armin and Rosti, Marco Edoardo and Tammisola, Outi and Brandt, Luca,
+A fully Eulerian hybrid immersed boundary-phase field model for contact line dynamics on complex geometries,
 Journal of Computational Physics, 110468, 2021
 
 
