@@ -49,7 +49,7 @@ integer :: phi_scheme,c_scheme,T_scheme
 
 ! control parameters
 phi_scheme=1   ! 1 is explicit
-c_scheme  =0   ! 1 is explicit
+c_scheme  =1   ! 1 is explicit
 T_scheme  =1   ! 1 is explicit
 dt=2.0e-7
 begin =0
