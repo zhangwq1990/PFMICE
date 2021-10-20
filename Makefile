@@ -5,8 +5,8 @@ FC = mpif90
 #FC   = ftn
 
 #FFLAGS := -r8 -fpconstant -O3 -132 -cpp #-ipo
-FFLAGS := -O3 -ffixed-line-length-none -mcmodel=large -fdefault-real-8 -cpp -Wall -fcheck=all -fbounds-check
-#FFLAGS := -O3 -ffixed-line-length-none -mcmodel=large -fdefault-real-8 -cpp -fbounds-check
+#FFLAGS := -O3 -ffixed-line-length-none -mcmodel=large -fdefault-real-8 -cpp -Wall -fcheck=all -fbounds-check
+FFLAGS := -O3 -ffixed-line-length-none -mcmodel=large -fdefault-real-8 -cpp -fbounds-check
 ## FFLAGS := -r8 -O3 -mcmodel=medium #-Mlarge_arrays -mp #-fopenmp 
 
 BIG :=  -mcmodel=medium
@@ -32,6 +32,7 @@ SRC = constants.f90  \
       bou.f90   \
       restart.f90 \
       loadd.f90  \
+      old.f90 \
       conserve.f90 \
       thomas.f90 \
       phi.f90 \
@@ -53,6 +54,7 @@ SRC = constants.f90  \
       energy.f90 \
       vtk_write.f90 \
       debug_write.f90 \
+      outlet.f90 \
       main.f90
 
 OBJ = $(SRC:.f90=.o)

@@ -196,7 +196,8 @@ real, dimension(-2:i1+2,-2:j1+2,-2:k1+2), intent(inout)  :: T
 !
 do j=-2,j1+2
   do i=-2,i1+2
-    T(i,j,0) = 270     ! fix value
+    !T(i,j,0) = 270     ! fix value
+    T(i,j,0) = T(i,j,1)     ! fix value
     T(i,j,k1) = T(i,j,kmax) ! Newmann, adiabetic
   enddo
 enddo

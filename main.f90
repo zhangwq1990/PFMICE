@@ -4,6 +4,7 @@ use mod_var
 use mod_global
 use mod_parallel
 use mod_init
+use mod_old
 use mod_logo
 use mod_field
 use mod_bou
@@ -26,6 +27,7 @@ use mod_correc
 use mod_temp
 use mod_energy
 use mod_vtk_write
+use mod_outlet
 use mod_debug_write
 use mod_chem
 implicit none
@@ -38,7 +40,7 @@ real, pointer, dimension(:,:,:) :: qqq
 integer :: i,j,k,save_vtk,output_screen,vtk_start,vtk_end,save_restart,line
 real :: res0,res1,res2,res3,res4
 real :: time1, time2
-real:: mass !, sum111,var_total,var_total1,var_total2,var_total3,var_total4,var_total5,var_total6
+real:: mass,totalmass !, sum111,var_total,var_total1,var_total2,var_total3,var_total4,var_total5,var_total6
 real:: phicmin,Tmax,Tmin,cmin,cmax,phimax,phimin
 integer :: phi_scheme,c_scheme,T_scheme
 
@@ -47,20 +49,22 @@ integer :: phi_scheme,c_scheme,T_scheme
 
 ! control parameters
 phi_scheme=1   ! 1 is explicit
-c_scheme  =1   ! 1 is explicit
+c_scheme  =0   ! 1 is explicit
 T_scheme  =1   ! 1 is explicit
 dt=2.0e-7
 begin =0
-nstep =500
-save_vtk=50
-output_screen=10
+!nstep =5000
+nstep =10
+save_vtk=500
+!output_screen=500
+output_screen=1
 save_restart=10000
 line=0  !this is to output a file with only 1 point, or more if you want
         ! if line=0, then no output; if it is not zero, then output with this frequency
 kill=1  !this means the programme will go on
 tec_view=0 !this means write out tecplot file
 cishu=0 !tecplot file at first is 0
-
+totalmass=0.
 
 !!!!!!!!!!!the time step to start and end
 vtk_start=1
@@ -158,13 +162,13 @@ istep =0
 !call post2dme(istep,1,itot/2,unew,vnew,wnew,pnew,C_Po)
 
 
-!debug output
-debug1=0.0
-debug2=0.
-debug3=0.
-debug4=0.
-debug5=0.
-debug6=0.
+!!debug output
+!debug1=0.0
+!debug2=0.
+!debug3=0.
+!debug4=0.
+!debug5=0.
+!debug6=0.
 
   use_c_map=0  !do not use map_c at the beginning
   use_phi_map=0  !do not use map_c at the beginning
@@ -193,22 +197,24 @@ do istep = begin+1,begin+nstep  !here I changed the defination of nstep
 
 
 
-! give old values
-rholold2=rholold
-rholold=rhol
-rholcp_old=rholcp
-PFM_phi_old=PFM_phi
-PFM_c_old=PFM_c
-kkold=kk
-vislold=visl
-Told=Tnew
-uold=unew
-vold=vnew
-wold=wnew
-pold=pnew
-chem_pot_old=chem_pot
-Phi_c_old=Phi_c
-delta_u_old=delta_u
+!! give old values
+!rholold2=rholold
+!rholold=rhol
+!rholcp_old=rholcp
+!PFM_phi_old=PFM_phi
+!PFM_c_old=PFM_c
+!kkold=kk
+!vislold=visl
+!Told=Tnew
+!uold=unew
+!vold=vnew
+!wold=wnew
+!pold=pnew
+!chem_pot_old=chem_pot
+!Phi_c_old=Phi_c
+!delta_u_old=delta_u
+
+call old
 
 
 
@@ -325,7 +331,7 @@ endif
      !print*, "aaa"
      call mpi_allreduce(MPI_IN_PLACE,phi_c_wb,  1,mpi_real8,mpi_sum,comm_cart,error)   !calculate the demoninator and coefficient of equation50
      call mpi_allreduce(MPI_IN_PLACE,phi_c_diff,1,mpi_real8,mpi_sum,comm_cart,error)
-     call mapc   !this is to force phi back to [0,1]
+     call mapc   !this is to force c back to [0,1]
 
 
       call c_RHS(BigQ)
@@ -554,7 +560,15 @@ if (mod(istep,output_screen).eq.0 .or. (istep==1)) then
     if (myid.eq.0) write(6,*) "  "
     call CPU_time(time2)
     print*, "time used is ", time2-time1
+    !if (myid.eq.0) then
+    !    do k=1,kmax
+    !       !print*, k,debug5(1,10,k),debug6(1,10,k),PFM_phi(1,10,k),Tnew(i,j,k)
+    !       print*, k,debug2(1,10,k),debug3(1,10,k),debug4(1,10,k),debug1(1,10,k),debug5(1,10,k),PFM_c(1,10,k)
+    !    enddo
+    !endif
+call outmass(totalmass)
 endif
+
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

@@ -282,7 +282,7 @@ end subroutine ddebug
     integer :: output_unit, input_unit
     parameter ( input_unit = 8, output_unit = 9 )
 
-    character(len=8) :: istepchar
+    character(len=12) :: istepchar
     character(len=48) :: filename
 
     !----- Create file -----!
@@ -290,7 +290,7 @@ end subroutine ddebug
     ifich = 10
     q = char(34)
 
-    write(istepchar,'(i8.8)') istep
+    write(istepchar,'(i12.12)') istep
     if (type2d.eq.1) then  
       filename = datadir//'debugYZ_'//istepchar//'.vtk'
     elseif (type2d.eq.2) then

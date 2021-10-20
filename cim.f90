@@ -44,6 +44,7 @@ do k=1,kmax
          advective = (m_x_phi_c(i,j,k)-m_x_phi_c(i-1,j,k))/dx + &
                      (m_y_phi_c(i,j,k)-m_y_phi_c(i,j-1,k))/dy + &
                      (m_z_phi_c(i,j,k)-m_z_phi_c(i,j,k-1))/dz 
+         !advective =0.
          !if (k==kmax) then
          !   advective = (m_x_phi_c(i,j,k)-m_x_phi_c(i-1,j,k))/dx + &
          !               (m_y_phi_c(i,j,k)-m_y_phi_c(i,j-1,k))/dy + &
@@ -61,11 +62,13 @@ do k=1,kmax
 
          if (Tnew(i,j,k)>t_melt .and. PFM_c(i,j,k)==0.) then !here the temperature is in degree, not Kelvin
             pterm=1.0
+            !pterm=0.0
          else if (Tnew(i,j,k)<t_melt .and. PFM_c(i,j,k)==1 ) then
             pterm=1.0
+            !pterm=0.0
          else
-           !pterm=-30.0*PFM_c(i,j,k)**2*(3.0*PFM_c(i,j,k)**2-4.0*PFM_c(i,j,k)+1.0)
-           pterm=30.0*PFM_c(i,j,k)**2*(3.0*PFM_c(i,j,k)**2-4.0*PFM_c(i,j,k)+1.0)
+           pterm=-30.0*PFM_c(i,j,k)**2*(3.0*PFM_c(i,j,k)**2-4.0*PFM_c(i,j,k)+1.0)
+           !pterm=30.0*PFM_c(i,j,k)**2*(3.0*PFM_c(i,j,k)**2-4.0*PFM_c(i,j,k)+1.0)
          endif
          temp=rho_2*latent/t_melt*PFM_phi(i,j,k)*(t_melt-Tnew(i,j,k)) * pterm
 
@@ -92,10 +95,13 @@ do k=1,kmax
                      +mobility_c*lamda_c*(PFM_phi(i,j,k+1)+2.0*PFM_phi(i,j,k)+PFM_phi(i,j,k-1)+4.0*num_s)/2.0/dz2 &
                      +mobility_c*lamda_c/PFM_l_c**2*(PFM_phi(i,j,k)+num_s)*(12.0*PFM_c(i,j,k)**2-12.0*PFM_c(i,j,k)+2.0) &
                      +mobility_c*rho_2*latent/t_melt*(PFM_phi(i,j,k)+num_s)*(t_melt-Tnew(i,j,k)) &
-                     *(-60.0)*PFM_c(i,j,k)*(2.0*PFM_c(i,j,k)-1.0)*(PFM_c(i,j,k)-1.0)
+                     *60.0*PFM_c(i,j,k)*(2.0*PFM_c(i,j,k)-1.0)*(PFM_c(i,j,k)-1.0)
 
                      
          CC_z(i,j,k)=-mobility_c*lamda_c*(PFM_phi(i,j,k+1)+PFM_phi(i,j,k)+2.0*num_s)/2.0/dz2
+         debug2(i,j,k)=AA_z(i,j,k)
+         debug3(i,j,k)=BB_z(i,j,k)
+         debug4(i,j,k)=CC_z(i,j,k)
       enddo
    enddo
 enddo
@@ -129,7 +135,7 @@ do k=1,kmax
    do j=1,jmax
       do i=1,imax
          PFM_c(i,j,k)=RHS_z(i,j,k)
-         debug2(i,j,k)=RHS_z(i,j,k)
+         debug5(i,j,k)=PFM_c(i,j,k)
       enddo
    enddo
 enddo
@@ -164,7 +170,7 @@ do k=1,kmax
          else if (Tnew(i,j,k)<t_melt .and. PFM_c(i,j,k)==1 ) then
             pterm=1.0
          else
-           pterm=30.0*PFM_c(i,j,k)**2*(3.0*PFM_c(i,j,k)**2-4.0*PFM_c(i,j,k)+1.0)
+           pterm=-30.0*PFM_c(i,j,k)**2*(3.0*PFM_c(i,j,k)**2-4.0*PFM_c(i,j,k)+1.0)
          endif
          temp=rho_2*latent/t_melt*PFM_phi(i,j,k)*(t_melt-Tnew(i,j,k)) * pterm
 
@@ -190,7 +196,8 @@ do k=1,kmax
                      +mobility_c*lamda_c*(PFM_phi(i,j+1,k)+2.0*PFM_phi(i,j,k)+PFM_phi(i,j-1,k)+4.0*num_s)/2.0/dy2 &
                      +mobility_c*lamda_c/PFM_l_c**2*(PFM_phi(i,j,k)+num_s)*(12.0*PFM_c(i,j,k)**2-12.0*PFM_c(i,j,k)+2.0) &
                      +mobility_c*rho_2*latent/t_melt*(PFM_phi(i,j,k)+num_s)*(t_melt-Tnew(i,j,k)) &
-                     *(-60.0)*PFM_c(i,j,k)*(2.0*PFM_c(i,j,k)-1.0)*(PFM_c(i,j,k)-1.0)
+                     !*(-60.0)*PFM_c(i,j,k)*(2.0*PFM_c(i,j,k)-1.0)*(PFM_c(i,j,k)-1.0)
+                     *60.0*PFM_c(i,j,k)*(2.0*PFM_c(i,j,k)-1.0)*(PFM_c(i,j,k)-1.0)
                      
          CC_z(i,j,k)=-mobility_c*lamda_c*(PFM_phi(i,j+1,k)+PFM_phi(i,j,k)+2.0*num_s)/2.0/dy2
       enddo
@@ -231,8 +238,9 @@ do k=1,kmax
    do j=1,jmax
       do i=1,imax
          PFM_c(i,j,k)=RHS_z(i,j,k)
-         !debug2(i,j,k)=RHS_z(i,j,k)
+         debug3(i,j,k)=RHS_z(i,j,k)
          Phi_c(i,j,k)=PFM_c(i,j,k)*(PFM_phi(i,j,k)+1e-30)   !this is right, or temperature will NAN
+         debug4(i,j,k)=Phi_c(i,j,k)
       enddo
    enddo
 enddo
@@ -247,10 +255,12 @@ do k=1,kmax
    do j=1,jmax
       do i=1,imax  !here use new phi value
          if ( (abs(PFM_phi(i,j,k)-Phi_c(i,j,k))<1e-12) .or. (PFM_phi(i,j,k)<1e-15) ) then
+         !if ( (abs(PFM_phi(i,j,k)-Phi_c(i,j,k))<1e-15) .or. (PFM_phi(i,j,k)<1e-15) ) then
             PFM_c(i,j,k)=1.0
          else
             PFM_c(i,j,k)=MIN(MAX(PFM_c(i,j,k), 0.0),1.0)
          endif
+         debug6(i,j,k)=PFM_c(i,j,k)
       enddo
    enddo
 enddo

@@ -110,39 +110,45 @@ This project is licensed under the GUN general Licenses - see the LICENSE.md fil
 
 
 ## References
-<a id="1">[1]</a> 
+<a id="1">[1]</a>
+A fully Eulerian hybrid immersed boundary-phase field model for contact line dynamics on complex geometries,
+Shahmardi, Armin and Rosti, Marco Edoardo and Tammisola, Outi and Brandt, Luca,
+Journal of Computational Physics, 110468, 2021
+
+
+<a id="2">[2]</a> 
 Ziyang Huang, Guang Lin, and Arezoo M Ardekani. (2021). 
 A consistent and conservative phase-field model for thermo-gas-liquid-solid flows including liquid-solid phase change.
 arXiv preprint,arXiv:2102.06863, 2021.
 
-<a id="2">[2]</a>
+<a id="3">[3]</a>
 Michael S Dodd and Antonino Ferrante. 
 A fast pressure-correction method for incompressible two-fluid flows. 
 Journal of Computational Physics, 273:416–434, 2014.
 
-<a id="3">[3]</a>
+<a id="4">[4]</a>
 Huang, Z., Lin, G. and Ardekani, A.M., 2020. 
 Consistent, essentially conservative and balanced-force phase-field method to model incompressible two-phase flows. 
 Journal of Computational Physics, 406, p.109192.
 
 
-<a id="4">[4]</a>
+<a id="5">[5]</a>
 Jim Douglas. 
 Alternating direction methods for three space variables. Numerische Mathematik,
 4(1):41–63, 1962.
 
-<a id="5">[5]</a>
+<a id="6">[6]</a>
 N Li and S Laizet. 
 2decomp&fft–a highly scalable 2d decomposition library and fft interface,
 cray user group 2010 conference, edinburgh. 
 URL http://www. 2decomp. org/pdf/17B-CUG2010-paper-Ning Li. pdf, 2010.
 
-<a id="6">[6]</a>
+<a id="7">[7]</a>
 Xianmin Xu, Yana Di, and Haijun Yu. 
 Sharp-interface limits of a phase-field model with a generalized navier slip boundary condition for moving contact lines. 
 Journal of Fluid Mechanics, 849:805–833, 2018.
 
-<a id="7">[7]</a>
+<a id="8">[8]</a>
 Ziyang Huang, Guang Lin, and Arezoo M Ardekani. 
 Consistent and conservative scheme for incompressible two-phase flows using the conservative allen-cahn model. 
 Journal of Computational Physics, 420:109718, 2020.

@@ -17,7 +17,7 @@ wnew(:,:,:)    = 0.
 pnew(:,:,:)    = 0.
 PFM_phi(:,:,:) = 0.
 PFM_c(:,:,:) = 1.0 !all liquid
-Tnew(:,:,:)= 274  !higher than freezing temperature
+Tnew(:,:,:)= 273.1  !higher than freezing temperature
 
 ! set variable names for output
 variables(1)='PFM_phi'
@@ -46,6 +46,17 @@ do k=0,k1
    enddo
   enddo
 enddo
+
+
+!debug output
+debug1=0.0
+debug2=0.
+debug3=0.
+debug4=0.
+debug5=0.
+debug6=0.
+
+
 
 return
 end subroutine init

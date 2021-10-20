@@ -15,7 +15,7 @@ implicit none
 integer :: in,nr
 integer :: fh
 integer(kind=MPI_OFFSET_KIND) :: filesize,disp
-character(len=20) :: istepchar
+character(len=30) :: istepchar
 real, dimension(3) :: fldinfo
 real, dimension(imax,jmax,kmax) :: temp
 integer:: i,j
