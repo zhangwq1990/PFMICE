@@ -84,7 +84,10 @@ where N is the number of CPU cores.
 
 ## Demos
 
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![Alt Text](https://github.com/zhangwq1990/PFMICE/blob/581fee55f495da315892b3d34b0d5dc611d14cb3/demo/111.gif)
+![Alt Text](https://github.com/zhangwq1990/PFMICE/blob/581fee55f495da315892b3d34b0d5dc611d14cb3/demo/222.gif)
+![Alt Text](https://github.com/zhangwq1990/PFMICE/blob/581fee55f495da315892b3d34b0d5dc611d14cb3/demo/333.gif)
+![Alt Text](https://github.com/zhangwq1990/PFMICE/blob/581fee55f495da315892b3d34b0d5dc611d14cb3/demo/444.gif)
 
 ## Help
 
