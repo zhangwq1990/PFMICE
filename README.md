@@ -84,9 +84,13 @@ where N is the number of CPU cores.
 
 ## Demos
 
+Solidification of a liquid (the density ratio of the liquid to the solid is 2:1):
+
 ![Alt Text](https://github.com/zhangwq1990/PFMICE/blob/581fee55f495da315892b3d34b0d5dc611d14cb3/demo/111.gif)
-![Alt Text](https://github.com/zhangwq1990/PFMICE/blob/581fee55f495da315892b3d34b0d5dc611d14cb3/demo/222.gif)
+
+Water on a hydrophilic surface:
 ![Alt Text](https://github.com/zhangwq1990/PFMICE/blob/581fee55f495da315892b3d34b0d5dc611d14cb3/demo/333.gif)
+Water on a hydrophobic surface:
 ![Alt Text](https://github.com/zhangwq1990/PFMICE/blob/581fee55f495da315892b3d34b0d5dc611d14cb3/demo/444.gif)
 
 ## Help
