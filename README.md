@@ -81,6 +81,11 @@ mpirun -np N PFMICE
 ```
 where N is the number of CPU cores.
 
+
+## Demos
+
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
 ## Help
 
 Any advise for common problems or issues.
