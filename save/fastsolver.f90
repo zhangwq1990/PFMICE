@@ -1,7 +1,6 @@
 module mod_solver
 use mod_cons
 use mod_var
-use mod_global, only : myid
 implicit none
 private
 public solver2d
@@ -17,27 +16,7 @@ real :: bb
 real :: z,d(imax,jmax,kmax)
 real :: di(itot),dj(jtot)
 integer :: i,j,k
-
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-real, dimension(8) :: numbers
-real :: ei(8),fi(8+15)
-numbers = (/1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0 /)
 !
-if (myid==1) then
-call vrffti(8,fi)
-call vrfftf(1,8,numbers(1:8),ei,1,fi)
-do i=1,8
-   print*,i,numbers(i)
-enddo
-call vrfftb(1,8,numbers(1:8),ei,1,fi)
-do i=1,8
-   print*,i,numbers(i)
-enddo
-endif
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-
 call transpose_z_to_y(pz,py)
 call transpose_y_to_x(py,px)
 !

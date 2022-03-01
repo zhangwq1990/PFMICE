@@ -109,7 +109,7 @@ Developer: Wenqiang Zhang
 
 Email: zhangwq1990@yahoo.com
 
-Co-Developer: Armin Shahmardi, Ziyang Huang, Xuerui Mao
+Co-Developer: Zhihua Wang, Armin Shahmardi, Ziyang Huang, Xuerui Mao
 
 ## Version History
 
